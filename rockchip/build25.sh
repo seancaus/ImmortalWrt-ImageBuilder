@@ -66,6 +66,13 @@ PACKAGES="$PACKAGES luci-i18n-filemanager-zh-cn"
 # 合并imm仓库以外的第三方插件
 PACKAGES="$PACKAGES $CUSTOM_PACKAGES"
 
+# 机型差异化包
+case "$PROFILE" in
+  ariaboard_photonicat|ariaboard_photonicat2)
+    PACKAGES="$PACKAGES kmod-ath11k kmod-ath11k-pci ath11k-firmware-wcn6855 wpad-openssl kmod-usb-serial-option kmod-usb-net-cdc-mbim kmod-mhi-pci-generic kmod-mhi-wwan-ctrl kmod-mhi-wwan-mbim luci-proto-modemmanager luci-app-modemband pciutils usbutils luci-i18n-sms-tool-js-zh-cn"
+    ;;
+esac
+
 # 构建镜像
 echo "$(date '+%Y-%m-%d %H:%M:%S') - Building image with the following packages:"
 echo "$PACKAGES"
