@@ -73,6 +73,10 @@ case "$PROFILE" in
     ;;
 esac
 
+# 预烘焙 daeuniverse 签名公钥
+mkdir -p /home/build/immortalwrt/files/etc/apk/keys
+wget -qO /home/build/immortalwrt/files/etc/apk/keys/daeuniverse.pem https://openwrt.daeuniverse.org/public-key.pem || true
+
 # 构建镜像
 echo "$(date '+%Y-%m-%d %H:%M:%S') - Building image with the following packages:"
 echo "$PACKAGES"
